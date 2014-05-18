@@ -37,7 +37,11 @@ public class RqlCursor implements Iterable<RqlObject> ,Iterator<RqlObject> {
 		if (_index < _response.getResponseCount()) {
 			return true;
 		} else if (_response.getType() == Response.ResponseType.SUCCESS_PARTIAL) {
-			_response = _connection.get_more(_response.getToken());
+			try {
+				_response = _connection.get_more(_response.getToken());
+			} catch (RqlDriverException e) {
+				throw new NoSuchElementException(e.getMessage());
+			}
 			_index = 0;
 			return _index < _response.getResponseCount();
 		}
