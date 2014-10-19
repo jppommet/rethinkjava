@@ -892,5 +892,59 @@ public abstract class RqlMethodQuery extends RqlQuery {
             return TermType.DECEMBER ;
         }
     }
+	public static class Group extends RqlMethodQuery {
+		public  Group(Object ...args) {
+			construct(args);
+		}
+		@Override
+		protected TermType tt() {
+			return Term.TermType.GROUP;
+		}
+	}
+	public static class Ungroup extends RqlMethodQuery {
+		public  Ungroup(Object ...args) {
+			construct(args);
+		}
+		@Override
+		protected TermType tt() {
+			return Term.TermType.UNGROUP;
+		}
+	}	
+	public static class Sum extends RqlMethodQuery {
+		public  Sum(Object ...args) {
+			construct(args);
+		}
+		@Override
+		protected TermType tt() {
+			return Term.TermType.SUM;
+		}
+	}
+	public static class Avg extends RqlMethodQuery {
+		public  Avg(Object ...args) {
+			construct(args);
+		}
+		@Override
+		protected TermType tt() {
+			return Term.TermType.AVG;
+		}
+	}
+	public static class Min extends RqlMethodQuery {
+		public  Min(Object ...args) {
+			construct(args);
+		}
+		@Override
+		protected TermType tt() {
+			return Term.TermType.MIN;
+		}
+	}
+	public static class Max extends RqlMethodQuery {
+		public  Max(Object ...args) {
+			construct(args);
+		}
+		@Override
+		protected TermType tt() {
+			return Term.TermType.MAX;
+		}
+	}	
 }
 

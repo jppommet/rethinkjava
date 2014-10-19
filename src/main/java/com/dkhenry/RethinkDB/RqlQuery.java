@@ -553,4 +553,37 @@ abstract public class RqlQuery {
 			return Term.TermType.FUNC;
 		}
 	}
+	
+    public static class Split extends RqlQuery {
+        public Split(Object ...args) {
+                construct(args);
+        }
+
+        @Override
+        protected TermType tt() {
+                return Term.TermType.SPLIT;
+        }
+    }
+    
+    public static class Random extends RqlQuery {
+        public Random(Object ...args) {
+                construct(args);
+        }
+
+        @Override
+        protected TermType tt() {
+                return Term.TermType.RANDOM;
+        }
+    }
+    
+    public static class ObjectType extends RqlQuery {
+        public ObjectType(Object ...args) {
+                construct(args);
+        }
+
+        @Override
+        protected TermType tt() {
+                return Term.TermType.OBJECT;
+        }
+    }
 }

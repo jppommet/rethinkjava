@@ -137,7 +137,7 @@ public class IntegrationTest {
 			    new HashMap() {{ put("name","William Adama");put("show","Battlestar Galactica"); }}, 
 			    new HashMap() {{ put("name","Homer Simpson");put("show","The Simpsons"); }}
 		        ),
-                new HashMap() {{ put("durability","hard"); put("return_vals",false);  put("upsert",false); }}
+                new HashMap() {{ put("durability","hard"); put("return_changes",false);  put("conflict","update"); }}
          ));
 		
 		List generatedKeys = cursor.next().getAs("generated_keys");

@@ -28,7 +28,8 @@ public class CompletnessTest {
 							.replace("each","Each")
 							.replace("map","Map")
 							.replace("of","Of")
-							.replace("call","Call");									
+							.replace("call","Call")
+							.replace("Object","ObjectType");
 			types.add( new String[] { finalName });
 		}
 		return types.iterator();

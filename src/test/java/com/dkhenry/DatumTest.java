@@ -166,6 +166,15 @@ public class DatumTest {
                                 )
                     );
         term.addOptargsBuilder()
+        .setKey("return_changes")
+        .setVal(Ql2.Term.newBuilder()
+                .setType(Ql2.Term.TermType.DATUM)
+                .setDatum(Ql2.Datum.newBuilder()
+                        .setType(Ql2.Datum.DatumType.R_BOOL)
+                        .setRBool(false)
+                )
+        );        
+        term.addOptargsBuilder()
                 .setKey("durability")
                 .setVal(Ql2.Term.newBuilder()
                     .setType(Ql2.Term.TermType.DATUM)
@@ -175,30 +184,21 @@ public class DatumTest {
                     )
                 );
         term.addOptargsBuilder()
-                .setKey("returnVals")
+                .setKey("conflict")
                 .setVal(Ql2.Term.newBuilder()
                         .setType(Ql2.Term.TermType.DATUM)
                         .setDatum(Ql2.Datum.newBuilder()
-                                .setType(Ql2.Datum.DatumType.R_BOOL)
-                                .setRBool(false)
-                        )
-                );
-        term.addOptargsBuilder()
-                .setKey("upsert")
-                .setVal(Ql2.Term.newBuilder()
-                        .setType(Ql2.Term.TermType.DATUM)
-                        .setDatum(Ql2.Datum.newBuilder()
-                                .setType(Ql2.Datum.DatumType.R_BOOL)
-                                .setRBool(false)
+                                .setType(Ql2.Datum.DatumType.R_STR)
+                                .setRStr("update")
                         )
                 );
 
         RqlMethodQuery.Insert t = new RqlMethodQuery.Insert(
                 new HashMap() {{ put("SuperAwesomeKey",true); }},
-                new HashMap() {{ put("durability", "hard"); put("returnVals",false); put("upsert",false); }}
+                new HashMap() {{ put("durability", "hard"); put("return_changes",false); put("conflict","update"); }}
         );
         byte[] expected = term.build().toByteArray();
         byte[] actual = t.build().toByteArray();
-        AssertJUnit.assertArrayEquals(expected, actual);
+        AssertJUnit.assertArrayEquals(expected, actual);	
     }
 }

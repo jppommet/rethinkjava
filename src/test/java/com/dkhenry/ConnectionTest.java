@@ -1,8 +1,5 @@
 package com.dkhenry;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
@@ -28,7 +25,7 @@ public class ConnectionTest {
 		AssertJUnit.assertFalse("Error Connecting", rvalue);
 	}
 
-    @Test(groups={"acceptance"})
+    @Test(enabled = false, groups={"acceptance"})
     public void testSecuredConnection() {
         boolean rvalue = false;
         try {
@@ -72,7 +69,7 @@ public class ConnectionTest {
 		AssertJUnit.assertFalse("Error Connecting", rvalue);
 	}
 	
-	@Test(groups={"acceptance"})
+	@Test(enabled = false, groups={"acceptance"})
 	public void testReconnect() {
 		boolean rvalue = false;
 		RqlConnection r;
