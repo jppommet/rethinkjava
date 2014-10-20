@@ -319,6 +319,14 @@ abstract public class RqlQuery {
 	public RqlMethodQuery.ForEach for_each(Object ...args) {
 		return prepend_construct(args,RqlMethodQuery.ForEach.class);
 	}
+	
+	public RqlMethodQuery.Min min(Object ...args) {
+		return prepend_construct(args, RqlMethodQuery.Min.class);
+	}
+	
+	public RqlMethodQuery.Max max(Object ...args) {
+		return prepend_construct(args, RqlMethodQuery.Max.class);
+	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <T> RqlQuery eval(T t) {

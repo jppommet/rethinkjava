@@ -1,8 +1,7 @@
 package com.dkhenry.RethinkDB;
 
-import com.rethinkdb.Ql2.Term.TermType;
 import com.rethinkdb.Ql2.Term;
-import com.sun.org.apache.xerces.internal.impl.dv.xs.MonthDayDV;
+import com.rethinkdb.Ql2.Term.TermType;
 
 public abstract class RqlMethodQuery extends RqlQuery {
 	public static class Insert extends RqlMethodQuery {
