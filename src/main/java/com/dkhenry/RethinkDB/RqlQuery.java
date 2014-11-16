@@ -221,6 +221,10 @@ abstract public class RqlQuery {
 	public RqlMethodQuery.IsEmpty is_empty(Object ...args) {
 		return prepend_construct(args,RqlMethodQuery.IsEmpty.class);
 	}
+	
+	public RqlQuery.Count count(Object ...args) {
+		return prepend_construct(args,RqlQuery.Count.class);
+	}
 
 	public RqlQuery.Slice slice(Object ...args) {
 		return prepend_construct(args,RqlQuery.Slice.class);
@@ -524,8 +528,8 @@ abstract public class RqlQuery {
 			return prepend_construct(args, RqlMethodQuery.Filter.class);
 		}
 
-		public RqlMethodQuery.Count count(Object ...args) {
-			return prepend_construct(args,RqlMethodQuery.Count.class);
+		public Count count(Object ...args) {
+			return prepend_construct(args,Count.class);
 		}
 	}
 
@@ -594,4 +598,15 @@ abstract public class RqlQuery {
                 return Term.TermType.OBJECT;
         }
     }
+    
+    public static class Count extends RqlQuery {
+        public Count(Object ...args) {
+                construct(args);
+        }
+
+        @Override
+        protected TermType tt() {
+                return Term.TermType.COUNT;
+        }
+    }    
 }
